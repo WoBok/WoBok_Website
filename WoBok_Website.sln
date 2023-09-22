@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34003.232
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoBok_Website", "WoBok_Website.csproj", "{DC4E4CBA-2F9F-4B89-B8FC-0B369DE0DF0E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC4E4CBA-2F9F-4B89-B8FC-0B369DE0DF0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC4E4CBA-2F9F-4B89-B8FC-0B369DE0DF0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC4E4CBA-2F9F-4B89-B8FC-0B369DE0DF0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC4E4CBA-2F9F-4B89-B8FC-0B369DE0DF0E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {221D6CF0-F301-4948-9D09-C4271490D054}
+	EndGlobalSection
+EndGlobal
