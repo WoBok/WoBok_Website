@@ -474,11 +474,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\WebProjects\\WoBok_Website\\WoBok_Website.csproj",
+      "projectUniqueName": "D:\\WebProjects\\WoBok_Website\\Server\\WoBok_Website.csproj",
       "projectName": "WoBok_Website",
-      "projectPath": "D:\\WebProjects\\WoBok_Website\\WoBok_Website.csproj",
+      "projectPath": "D:\\WebProjects\\WoBok_Website\\Server\\WoBok_Website.csproj",
       "packagesPath": "C:\\Users\\WemakeProgramer\\.nuget\\packages\\",
-      "outputPath": "D:\\WebProjects\\WoBok_Website\\obj\\",
+      "outputPath": "D:\\WebProjects\\WoBok_Website\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\WemakeProgramer\\AppData\\Roaming\\NuGet\\NuGet.Config",
