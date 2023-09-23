@@ -14,7 +14,7 @@ namespace WoBok_Website.Controllers
             {
                 markdownContent = System.IO.File.ReadAllText($"D:/WoBokMarkdown/{fileName}.md");
             }
-            catch (System.IO.FileNotFoundException)
+            catch (FileNotFoundException)
             {
                 return "Not Found!";
             }
