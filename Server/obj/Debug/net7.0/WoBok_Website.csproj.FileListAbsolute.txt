@@ -31,3 +31,36 @@ D:\WebProjects\WoBok_Website\obj\Debug\net7.0\refint\WoBok_Website.dll
 D:\WebProjects\WoBok_Website\obj\Debug\net7.0\WoBok_Website.pdb
 D:\WebProjects\WoBok_Website\obj\Debug\net7.0\WoBok_Website.genruntimeconfig.cache
 D:\WebProjects\WoBok_Website\obj\Debug\net7.0\ref\WoBok_Website.dll
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\bin\Debug\net7.0\appsettings.Development.json
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\bin\Debug\net7.0\appsettings.json
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\bin\Debug\net7.0\WoBok_Website.exe
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\bin\Debug\net7.0\WoBok_Website.deps.json
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\bin\Debug\net7.0\WoBok_Website.runtimeconfig.json
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\bin\Debug\net7.0\WoBok_Website.dll
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\bin\Debug\net7.0\WoBok_Website.pdb
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\bin\Debug\net7.0\Microsoft.OpenApi.dll
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\WoBok_Website.csproj.AssemblyReference.cache
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\WoBok_Website.GeneratedMSBuildEditorConfig.editorconfig
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\WoBok_Website.AssemblyInfoInputs.cache
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\WoBok_Website.AssemblyInfo.cs
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\WoBok_Website.csproj.CoreCompileInputs.cache
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\WoBok_Website.MvcApplicationPartsAssemblyInfo.cs
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\WoBok_Website.MvcApplicationPartsAssemblyInfo.cache
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\staticwebassets\msbuild.WoBok_Website.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\staticwebassets\msbuild.build.WoBok_Website.props
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.WoBok_Website.props
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.WoBok_Website.props
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\staticwebassets.pack.json
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\staticwebassets.build.json
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\staticwebassets.development.json
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\scopedcss\bundle\WoBok_Website.styles.css
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\WoBok_Website.csproj.CopyComplete
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\WoBok_Website.dll
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\refint\WoBok_Website.dll
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\WoBok_Website.pdb
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\WoBok_Website.genruntimeconfig.cache
+D:\Darwin Vinci\Learn\Web\WoBok_Website\Server\obj\Debug\net7.0\ref\WoBok_Website.dll

@@ -1,9 +1,25 @@
 <html>
-    <body>
-        <button id="getMarkdown">获得文档</button>
-    </body>
+
+<body>
+    <button id="getMarkdown">获得文档</button>
+</body>
+
 </html>
 
 <script>
-    
+    document.getElementById("getMarkdown").onclick = function () {
+        console.log("Clicked getMardwon button.");
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (request.readyState === XMLHttpRequest.DONE) {
+                if (request.status === 200) {
+                    alert(request.responseText);
+                } else {
+                    alert("status" + request.status);
+                }
+            }
+        }
+        request.open("Get", "http://localhost/api/MarkdownLoader/Readme", true);
+        request.send();
+    };
 </script>
