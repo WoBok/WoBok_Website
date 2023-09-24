@@ -12,46 +12,73 @@
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-    //获得文档
-    document.getElementById('getMarkdown').onclick = function () {
-        console.log('Clicked getMardwon button.');
-        var request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-            if (request.readyState === XMLHttpRequest.DONE) {
-                if (request.status === 200) {
-                    console.log('Markdown content:');
-                    console.log(request.responseText);
-                    document.getElementById('markdownContent').innerHTML = marked.parse(request.responseText);
-                } else {
-                    console.log('status' + request.status);
-                }
+    function BindClickEventById(id, event) {
+        document.getElementById(id).addEventListener("click", event);
+    }
+    async function FetchText(url) {
+        try {
+            const response = await fetch(url);
+            if (response.ok) {
+                return response.text();
+            } else {
+                console.log(response.statusText);
+                return null;
             }
+        } catch (error) {
+            console.log(error);
         }
-        var fileName = document.getElementById('fileName').value;
-        request.open("Get", `/////api/MarkdownLoader/${fileName}`, true);
-        request.send();
-    };
+    }
+    async function FecthJson(url) {
+        try {
+            const response = await fetch(url);
+            if (response.ok) {
+                return response.json();
+            } else {
+                console.log(response.statusText);
+                return null;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+</script>
 
-    document.getElementById('getFileList').onclick = function () {
-        console.log('Clicked getFileList button.');
-        var request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-            if (request.readyState === XMLHttpRequest.DONE) {
-                if (request.status === 200) {
-                    console.log('File list:');
-                    console.log(request.response);
-                    var fileNames = JSON.parse(request.response);
-                    console.log(typeof fileNames);
-                    for (const fileName of fileNames) {
-                        console.log(fileName);
-                    }
-                } else {
-                    console.log('status' + request.status);
-                }
-            }
+<script>
+    async function GetMarkdownText(fileName) {
+        var url = `/api/MarkdownLoader/${fileName}`;
+        return await FetchText(url);
+    }
+
+    function ParseMarkdown(md) {
+        document.getElementById("markdownContent").innerHTML = marked.parse(md);
+    }
+
+    function DisplayMarkdown(fileName) {
+        GetMarkdownText(fileName).then(text => ParseMarkdown(text));
+    }
+
+    BindClickEventById("getMarkdown", () => {
+        var fileName = document.getElementById("fileName").value;
+        DisplayMarkdown(fileName);
+    });
+
+    function DisplayFileList(list) {
+        var fileListContent = document.getElementById("fileListContent");
+        fileListContent.innerText = "";
+        var ulNode = document.createElement("ol");
+        fileListContent.appendChild(ulNode);
+        for (let l of list) {
+            let liNode = document.createElement("li");
+            let fileNameNode = document.createTextNode(l);
+            liNode.appendChild(fileNameNode);
+            liNode.addEventListener("click", () => {
+                DisplayMarkdown(l);
+            });
+            ulNode.appendChild(liNode);
         }
-        request.open("Get", `api/FileList`, true);
-        request.send();
-        request.on
-    };
+    }
+
+    BindClickEventById("getFileList", () => {
+        FecthJson("api/FileList").then(json => DisplayFileList(json));
+    });
 </script>

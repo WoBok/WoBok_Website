@@ -1,0 +1,57 @@
+<html>
+
+<body>
+    <button id="getFileList">获得文件列表</button>
+    <div id="fileListContent"></div>
+    <input type="text" id="fileName">
+    <button id="getMarkdown">获得文档</button>
+    <div id="markdownContent"></div>
+</body>
+
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    //获得文档
+    document.getElementById('getMarkdown').onclick = function () {
+        console.log('Clicked getMardwon button.');
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (request.readyState === XMLHttpRequest.DONE) {
+                if (request.status === 200) {
+                    console.log('Markdown content:');
+                    console.log(request.responseText);
+                    document.getElementById('markdownContent').innerHTML = marked.parse(request.responseText);
+                } else {
+                    console.log('status' + request.status);
+                }
+            }
+        }
+        var fileName = document.getElementById('fileName').value;
+        request.open("Get", `/api/MarkdownLoader/${fileName}`, true);
+        request.send();
+    };
+
+    document.getElementById('getFileList').onclick = function () {
+        console.log('Clicked getFileList button.');
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (request.readyState === XMLHttpRequest.DONE) {
+                if (request.status === 200) {
+                    console.log('File list:');
+                    console.log(request.response);
+                    var fileNames = JSON.parse(request.response);
+                    console.log(typeof fileNames);
+                    for (const fileName of fileNames) {
+                        console.log(fileName);
+                    }
+                } else {
+                    console.log('status' + request.status);
+                }
+            }
+        }
+        request.open("Get", `api/FileList`, true);
+        request.send();
+        request.on
+    };
+</script>
