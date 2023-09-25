@@ -9,18 +9,23 @@ namespace WoBok_Website.Controllers
         [HttpGet("{fileName}")]
         public string Get(string fileName)
         {
-            string? markdownContent;
-            try
+            var markdownFilePath = Path.Combine("D:/WoBokMarkdown/", fileName + ".md");
+
+            if (System.IO.File.Exists(markdownFilePath))
             {
-                markdownContent = System.IO.File.ReadAllText($"D:/WoBokMarkdown/{fileName}.md");
+                try
+                {
+                    return System.IO.File.ReadAllText(markdownFilePath);
+                }
+                catch (IOException)
+                {
+                    return "";
+                }
             }
-            catch (FileNotFoundException)
+            else
             {
-                return "Not Found!";
+                return "";
             }
-            if (markdownContent == null)
-                return "empty!";
-            return markdownContent;
         }
     }
 }
