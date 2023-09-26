@@ -9,7 +9,7 @@ namespace WoBok_Website.Controllers
         [HttpGet("{fileName}")]
         public string Get(string fileName)
         {
-            var markdownFilePath = Path.Combine("D:/WoBokMarkdown/", fileName + ".md");
+            var markdownFilePath = Path.Combine("D:\\WebProjects\\WoBok_Website\\WoBok_Website\\Client\\Markdowns", fileName + ".md");
 
             if (System.IO.File.Exists(markdownFilePath))
             {

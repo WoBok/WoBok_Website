@@ -44,6 +44,19 @@
 </script>
 
 <script>
+    const renderer = {
+        image(href, title, text) {
+            return `<img src="${filePath}/${href}" alt="${text}">`;
+        }
+    }
+</script>
+
+<script>
+
+    marked.use({ renderer });
+
+    var filePath = "Markdowns";
+
     async function GetMarkdownText(fileName) {
         var url = `/api/MarkdownLoader/${fileName}`;
         return await FetchText(url);
