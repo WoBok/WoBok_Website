@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace WoBok_Website.Properties
+namespace WoBok_Website.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -8,8 +8,8 @@ namespace WoBok_Website.Properties
     {
         class Image
         {
-            public string? path { get; set; }
-            public byte[]? data { get; set; }
+            public string? Path { get; set; }
+            public byte[]? Data { get; set; }
         }
         [HttpGet("{fileName}")]
         public IActionResult GetImage(string fileName)
@@ -22,7 +22,7 @@ namespace WoBok_Website.Properties
                 var fileNames = Directory.GetFiles(imagesPath);
                 foreach (var file in fileNames)
                 {
-                    var image = new Image() { path = file, data = System.IO.File.ReadAllBytes(file) };
+                    var image = new Image() { Path = file, Data = System.IO.File.ReadAllBytes(file) };
                     list.Add(image);
                 }
                 return Ok(list);
@@ -31,12 +31,6 @@ namespace WoBok_Website.Properties
             {
                 return NotFound();
             }
-        }
-        //创建一个Person类，用于测试
-        public class Person
-        {
-            public string? Name { get; set; }
-            public int Age { get; set; }
         }
     }
 }
