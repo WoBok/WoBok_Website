@@ -12,6 +12,11 @@
     ul {
         list-style-type: none;
     }
+
+    .folder-name-node-content {
+        color: white;
+        background-color: black;
+    }
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -120,7 +125,10 @@
     function DisplayFolderNode(folderNames, parent) {
         for (let p of folderNames) {
             let liNode = document.createElement("li");
-            let folderNameNode = document.createTextNode("＞" + p);
+            let folderNameNodeContent = document.createTextNode("＞" + p);
+            let folderNameNode = document.createElement("span");
+            folderNameNode.appendChild(folderNameNodeContent);
+            folderNameNode.className = "folder-name-node-content";
             liNode.title = p;
             liNode.appendChild(folderNameNode);
 
@@ -133,21 +141,26 @@
         }
     }
 
-    function DisplayPathNode(pathNode) {
+    function DisplayPathNode(pathNode, parentNode) {
+        DisplayFileNode(pathNode["files"], parentNode);
+        DisplayFolderNode(pathNode["folders"], parentNode);
+    }
+
+    function DisplayRootPathNode(pathNode) {
         var fileListContent = document.getElementById("fileListContent");
         fileListContent.innerText = "";
 
         var ulNode = document.createElement("ul");
         fileListContent.appendChild(ulNode);
+
         var listRootNode = document.createElement("div");
         listRootNode.title = "FileListRoot";
         ulNode.appendChild(listRootNode);
 
-        DisplayFileNode(pathNode["files"], listRootNode);
-        DisplayFolderNode(pathNode["folders"], listRootNode);
+        DisplayPathNode(pathNode, listRootNode);
     }
 
     BindClickEventById("getFileList", () => {
-        GetFileList("*").then(json => DisplayPathNode(json));
+        GetFileList("*").then(json => DisplayRootPathNode(json));
     });
 </script>
