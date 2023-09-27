@@ -3,12 +3,16 @@
 <body>
     <button id="getFileList">获得文件列表</button>
     <div id="fileListContent"></div>
-    <input type="text" id="fileName">
-    <button id="getMarkdown">获得文档</button>
     <div id="markdownContent"></div>
 </body>
 
 </html>
+
+<style>
+    ul {
+        list-style-type: none;
+    }
+</style>
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
@@ -21,7 +25,7 @@
             if (response.ok) {
                 return response.text();
             } else {
-                console.log(response.statusText);
+                console.log("Fetch text failed: " + response.statusText);
                 return null;
             }
         } catch (error) {
@@ -34,7 +38,7 @@
             if (response.ok) {
                 return response.json();
             } else {
-                console.log(response.statusText);
+                console.log("Fetch json failed: " + response.statusText);
                 return null;
             }
         } catch (error) {
@@ -46,7 +50,7 @@
 <script>
     const renderer = {
         image(href, title, text) {
-            return `<img src="${filePath}/${href}" alt="${text}">`;
+            return `<img src="${markdownPath}/${href}" alt="${text}">`;
         }
     }
 </script>
@@ -55,7 +59,14 @@
 
     marked.use({ renderer });
 
-    var filePath = "Markdowns";
+    const rootPath = "Markdowns";
+
+    var markdownPath = rootPath;
+
+    async function GetFileList(path) {
+        var url = `/api/FileList/${path}`;
+        return await FecthJson(url);
+    }
 
     async function GetMarkdownText(fileName) {
         var url = `/api/MarkdownLoader/${fileName}`;
@@ -70,28 +81,73 @@
         GetMarkdownText(fileName).then(text => ParseMarkdown(text));
     }
 
-    BindClickEventById("getMarkdown", () => {
-        var fileName = document.getElementById("fileName").value;
-        DisplayMarkdown(fileName);
-    });
+    function BindFileNodeClickEvent(fileNameNode) {
+        fileNameNode.addEventListener("click", () => {
+            var path = GetMarkdownPath(fileNameNode);
+            if (path) {
+                markdownPath = `${rootPath}/${path}`;
+            }
+            var filePath = fileNameNode.title;
+            if (path) {
+                filePath = `${path}/${fileNameNode}`
+            }
+            DisplayMarkdown(filePath);
+        });
+    }
 
-    function DisplayFileList(list) {
-        var fileListContent = document.getElementById("fileListContent");
-        fileListContent.innerText = "";
-        var ulNode = document.createElement("ol");
-        fileListContent.appendChild(ulNode);
-        for (let l of list) {
+    function GetMarkdownPath(fileNameNode) {
+        var path;
+        var nodeParent = fileNameNode.parentNode;
+        while (nodeParent && nodeParent.title != "FileListRoot") {
+            path = `${nodeParent.title}/${path}`;
+        }
+        return path;
+    }
+
+    function DisplayFileNode(fileNames, parent) {
+        for (let p of fileNames) {
             let liNode = document.createElement("li");
-            let fileNameNode = document.createTextNode(l);
+            let fileNameNode = document.createTextNode("﹥" + p);
+            liNode.title = p;
             liNode.appendChild(fileNameNode);
-            liNode.addEventListener("click", () => {
-                DisplayMarkdown(l);
-            });
-            ulNode.appendChild(liNode);
+
+            BindFileNodeClickEvent(liNode);
+
+            parent.appendChild(liNode);
         }
     }
 
+    function DisplayFolderNode(folderNames, parent) {
+        for (let p of folderNames) {
+            let liNode = document.createElement("li");
+            let folderNameNode = document.createTextNode("＞" + p);
+            liNode.title = p;
+            liNode.appendChild(folderNameNode);
+
+            parent.appendChild(liNode);
+
+
+            liNode.addEventListener("click", () => {
+                DisplayMarkdown(p);
+            });
+        }
+    }
+
+    function DisplayPathNode(pathNode) {
+        var fileListContent = document.getElementById("fileListContent");
+        fileListContent.innerText = "";
+
+        var ulNode = document.createElement("ul");
+        fileListContent.appendChild(ulNode);
+        var listRootNode = document.createElement("div");
+        listRootNode.title = "FileListRoot";
+        ulNode.appendChild(listRootNode);
+
+        DisplayFileNode(pathNode["files"], listRootNode);
+        DisplayFolderNode(pathNode["folders"], listRootNode);
+    }
+
     BindClickEventById("getFileList", () => {
-        FecthJson("api/FileList").then(json => DisplayFileList(json));
+        GetFileList("*").then(json => DisplayPathNode(json));
     });
 </script>
