@@ -88,23 +88,35 @@
 
     function BindFileNodeClickEvent(fileNameNode) {
         fileNameNode.addEventListener("click", () => {
-            var path = GetMarkdownPath(fileNameNode);
-            if (path) {
+            var path = GetNodePath(fileNameNode);
+            if (path != "") {
                 markdownPath = `${rootPath}/${path}`;
             }
             var filePath = fileNameNode.title;
-            if (path) {
-                filePath = `${path}/${fileNameNode}`
+            if (path != "") {
+                filePath = `${path}${fileNameNode.title}`
             }
             DisplayMarkdown(filePath);
         });
     }
 
-    function GetMarkdownPath(fileNameNode) {
-        var path;
+    function BindFolderNodeClickEvent(folderNameNode) {
+        folderNameNode.addEventListener("click", () => {
+            var path = GetNodePath(folderNameNode);
+            var folderPath = folderNameNode.title;
+            if (path != "") {
+                folderPath = `${path}${folderNameNode.title}`
+            }
+            GetFileList(folderPath).then(json => DisplayPathNode(json, folderNameNode));
+        });
+    }
+
+    function GetNodePath(fileNameNode) {
+        var path = "";
         var nodeParent = fileNameNode.parentNode;
         while (nodeParent && nodeParent.title != "FileListRoot") {
-            path = `${nodeParent.title}/${path}`;
+            path = `${nodeParent.title}*${path}`;
+            nodeParent = nodeParent.parentNode;
         }
         return path;
     }
@@ -134,10 +146,7 @@
 
             parent.appendChild(liNode);
 
-
-            liNode.addEventListener("click", () => {
-                DisplayMarkdown(p);
-            });
+            BindFolderNodeClickEvent(liNode);
         }
     }
 

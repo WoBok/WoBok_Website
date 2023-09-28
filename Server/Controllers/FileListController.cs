@@ -10,7 +10,8 @@ namespace WoBok_Website.Controllers
         public IActionResult Get(string subPath)
         {
             const string rootPath = "D:\\Darwin Vinci\\Learn\\Web\\WoBok_Website\\Client\\Markdowns";
-            var path = subPath == "*" ? rootPath : Path.Combine(rootPath, subPath);
+            subPath = subPath.Replace('*', '\\');
+            var path = subPath == "\\" ? rootPath : Path.Combine(rootPath, subPath);
             if (!Directory.Exists(path))
             {
                 return NotFound();
