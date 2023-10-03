@@ -20,36 +20,12 @@
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script type="module" src="Scripts/ModelImporter.js"></script>
 <script>
     function BindClickEventById(id, event) {
         document.getElementById(id).addEventListener("click", event);
     }
-    async function FetchText(url) {
-        try {
-            const response = await fetch(url);
-            if (response.ok) {
-                return response.text();
-            } else {
-                console.log("Fetch text failed: " + response.statusText);
-                return null;
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
-    async function FecthJson(url) {
-        try {
-            const response = await fetch(url);
-            if (response.ok) {
-                return response.json();
-            } else {
-                console.log("Fetch json failed: " + response.statusText);
-                return null;
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
+
 </script>
 
 <script>
@@ -70,12 +46,12 @@
 
     async function GetFileList(path) {
         var url = `/api/FileList/${path}`;
-        return await FecthJson(url);
+        return await httpRequest.fecthJson(url);
     }
 
     async function GetMarkdownText(fileName) {
         var url = `/api/MarkdownLoader/${fileName}`;
-        return await FetchText(url);
+        return await httpRequest.fetchText(url);
     }
 
     function ParseMarkdown(md) {

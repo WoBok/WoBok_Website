@@ -469,7 +469,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\WemakeProgramer\\.nuget\\packages\\": {}
+    "C:\\Users\\东旭\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -477,11 +477,11 @@
       "projectUniqueName": "D:\\Darwin Vinci\\Learn\\Web\\WoBok_Website\\Server\\WoBok_Website.csproj",
       "projectName": "WoBok_Website",
       "projectPath": "D:\\Darwin Vinci\\Learn\\Web\\WoBok_Website\\Server\\WoBok_Website.csproj",
-      "packagesPath": "C:\\Users\\WemakeProgramer\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\东旭\\.nuget\\packages\\",
       "outputPath": "D:\\Darwin Vinci\\Learn\\Web\\WoBok_Website\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\WemakeProgramer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\东旭\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -535,7 +535,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
