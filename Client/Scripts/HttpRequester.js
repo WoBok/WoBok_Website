@@ -20,11 +20,9 @@ async function fetchRequest(url, type) {
 }
 
 export const httpRequest = {
-
     fetchText: async function (url) {
         return await fetchRequest(url, 'text');
     },
-
     fecthJson: async function (url) {
         return await fetchRequest(url, 'json');
     }

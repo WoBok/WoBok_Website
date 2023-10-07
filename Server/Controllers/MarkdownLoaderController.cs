@@ -9,6 +9,7 @@ namespace WoBok_Website.Controllers
         [HttpGet("{fileName}")]
         public IActionResult Get(string fileName)
         {
+            fileName = fileName.Replace('*', '\\');
             var markdownFilePath = Path.Combine("D:\\Darwin Vinci\\Learn\\Web\\WoBok_Website\\Client\\Markdowns", fileName + ".md");
 
             if (System.IO.File.Exists(markdownFilePath))
