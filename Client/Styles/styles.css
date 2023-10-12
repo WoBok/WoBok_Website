@@ -1,0 +1,52 @@
+ul {
+    list-style-type: none;
+}
+
+li {
+    margin-left: 10px;
+    padding-left: 5px;
+    border-left-width: 1px;
+    border-left-style: solid;
+}
+
+.page {
+    display: flex;
+    height: 100%;
+}
+
+.list {
+    height: 100%;
+    padding-right: 10px;
+    margin-right: 40px;
+    border-right-width: 1px;
+    border-right-style: solid;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.list-root {
+}
+
+.list-file {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.list-folder {
+}
+
+.list-folder-title {
+    display: block;
+    color: white;
+    background-color: black;
+    background-clip: content-box;
+    padding-top: 5px;
+}
+
+.list-group {
+}
+
+.content {
+    height: 100%;
+}

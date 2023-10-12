@@ -1,15 +1,18 @@
 import { httpRequest } from './HttpRequester.js'
 
-function BindClickEventById(id, event) {
-    document.getElementById(id).addEventListener("click", event);
-}
+const CLASSNAME_LIST_ROOT = 'list-root';
+const CLASSNAME_LIST_FILE = 'list-file';
+const CLASSNAME_LIST_FOLDER = 'list-folder';
+const CLASSNAME_LIST_FOLDER_TITLE = 'list-folder-title';
+const CLASSNAME_LIST_GROUP = 'list-group';
+
+
 
 const renderer = {
     image(href, title, text) {
         return `<img src="${markdownPath}/${href}" alt="${text}">`;
     }
 }
-
 
 marked.use({ renderer });
 
@@ -57,7 +60,7 @@ function BindFolderNodeClickEvent(folderNameNode) {
 
         event.stopPropagation();
 
-        var pathNameContainer = folderNameNode.getElementsByClassName("name-node-container");//隐藏与加载逻辑分离 Todo
+        var pathNameContainer = folderNameNode.getElementsByClassName(CLASSNAME_LIST_GROUP);//隐藏与加载逻辑分离 Todo
         if (pathNameContainer[0]) {
             var display = pathNameContainer[0].style.display;
             if (display == "none") {
@@ -79,7 +82,7 @@ function BindFolderNodeClickEvent(folderNameNode) {
 function GetNodePath(fileNameNode) {
     var path = "";
     var nodeParent = fileNameNode.parentNode;
-    while (nodeParent && nodeParent.title != "FileListRoot") {
+    while (nodeParent && nodeParent.title != CLASSNAME_LIST_ROOT) {
         if (nodeParent.title != "")
             path = `${nodeParent.title}*${path}`;
         nodeParent = nodeParent.parentNode;
@@ -92,7 +95,8 @@ function GetNodePath(fileNameNode) {
 function DisplayFileNode(fileNames, parent) {
     for (let p of fileNames) {
         let liNode = document.createElement("li");
-        let fileNameNode = document.createTextNode("﹥" + p);
+        liNode.className = CLASSNAME_LIST_FILE;
+        let fileNameNode = document.createTextNode(p);
         liNode.title = p;
         liNode.appendChild(fileNameNode);
 
@@ -105,10 +109,11 @@ function DisplayFileNode(fileNames, parent) {
 function DisplayFolderNode(folderNames, parent) {
     for (let p of folderNames) {
         let liNode = document.createElement("li");
-        let folderNameNodeContent = document.createTextNode("＞" + p);
+        liNode.className = CLASSNAME_LIST_FOLDER;
+        let folderNameNodeContent = document.createTextNode(p);
         let folderNameNode = document.createElement("span");
         folderNameNode.appendChild(folderNameNodeContent);
-        folderNameNode.className = "folder-name-node-content";
+        folderNameNode.className = CLASSNAME_LIST_FOLDER_TITLE;
         liNode.title = p;
         liNode.appendChild(folderNameNode);
 
@@ -120,7 +125,7 @@ function DisplayFolderNode(folderNames, parent) {
 
 function DisplayPathNode(pathNode, parentNode) {
     var node = document.createElement("div");
-    node.className = "name-node-container";
+    node.className = CLASSNAME_LIST_GROUP;
     parentNode.appendChild(node);
     if (pathNode["files"].length > 0)
         DisplayFileNode(pathNode["files"], node);
@@ -137,12 +142,10 @@ function DisplayRootPathNode(pathNode) {
     fileListContent.appendChild(ulNode);
 
     var listRootNode = document.createElement("div");
-    listRootNode.title = "FileListRoot";
+    listRootNode.title = CLASSNAME_LIST_ROOT;
     ulNode.appendChild(listRootNode);
 
     DisplayPathNode(pathNode, listRootNode);
 }
 
-BindClickEventById("getFileList", () => {
-    GetFileList("*").then(json => DisplayRootPathNode(json));
-});
+GetFileList("*").then(json => DisplayRootPathNode(json));

@@ -1,23 +1,17 @@
 <html>
 
+<head>
+<link rel="stylesheet" type="text/css" href="Styles/styles.css" />
+</head>
+
 <body>
-    <button id="getFileList">获得文件列表</button>
-    <div id="fileListContent"></div>
-    <div id="markdownContent"></div>
+    <div class="page">
+        <div id="fileListContent" class="list"></div>
+        <div id="markdownContent" class="content"></div>
+    </div>
 </body>
 
 </html>
-
-<style>
-    ul {
-        list-style-type: none;
-    }
-
-    .folder-name-node-content {
-        color: white;
-        background-color: black;
-    }
-</style>
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="Scripts/main.js" type="module"></script>
