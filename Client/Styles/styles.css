@@ -2,13 +2,6 @@ ul {
     list-style-type: none;
 }
 
-li {
-    margin-left: 10px;
-    padding-left: 5px;
-    border-left-width: 1px;
-    border-left-style: solid;
-}
-
 .page {
     display: flex;
     height: 100%;
@@ -18,11 +11,10 @@ li {
     height: 100%;
     padding-right: 10px;
     margin-right: 40px;
-    border-right-width: 1px;
-    border-right-style: solid;
     position: fixed;
-    top: 0;
+    top: 35px;
     right: 0;
+    overflow: auto;
 }
 
 .list-root {
@@ -36,17 +28,69 @@ li {
 .list-folder {
 }
 
+.list-file, .list-folder {
+    margin-left: 10px;
+    padding-left: 5px;
+    border-left-width: 1px;
+    border-left-style: solid;
+}
+
 .list-folder-title {
     display: block;
     color: white;
     background-color: black;
     background-clip: content-box;
     padding-top: 5px;
+    font-weight: bold;
 }
 
 .list-group {
 }
 
-.content {
+.list-divider {
     height: 100%;
+    position: fixed;
+    right: 40px;
+    border-right-width: 1px;
+    border-right-style: solid;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-title {
+    font-size: 20px;
+    font-weight: bold;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 35px;
+    display: flex;
+    align-items: flex-end;
+    background-color: white;
+}
+
+.content-divider {
+    position: fixed;
+    top: 35px;
+    width: 100%;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.content-markdown {
+    margin-top: 35px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-right: solid 3px white;
+    background: #000000;
 }
