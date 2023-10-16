@@ -5,7 +5,7 @@ const CLASSNAME_LIST_FILE = 'list-file';
 const CLASSNAME_LIST_FOLDER = 'list-folder';
 const CLASSNAME_LIST_FOLDER_TITLE = 'list-folder-title';
 const CLASSNAME_LIST_GROUP = 'list-group';
-const TITLE_LENGTH = 15;
+const TITLE_LENGTH = 30;
 
 const $markdownContent = document.querySelector("#markdownContent");
 const $fileListContent = document.querySelector("#fileListContent");
@@ -115,8 +115,20 @@ function getNodePath(fileNameNode) {
     return path;
 }
 
-function truncateStringWithEllipsis(inputString, maxLength) {
-    return inputString.length > maxLength ? inputString.substring(0, maxLength) + "..." : inputString;
+function truncateStringWithEllipsis(str, maxLength) {
+    const chinesePattern = /[\u4e00-\u9fa5]/;
+    var displayLength = 0;
+    for (var i = 0; i < maxLength; i++) {
+        if (chinesePattern.test(str[i]))
+            displayLength += 2;
+        else
+            displayLength += 1;
+        if (displayLength >= maxLength)
+            if (i < str.length)
+                return str.substring(0, i + 1) + '...';
+            else
+                return str;
+    }
 }
 
 function displayFileNode(fileNames, parent) {
