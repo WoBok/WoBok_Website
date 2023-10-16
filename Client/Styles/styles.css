@@ -2,6 +2,19 @@ ul {
     list-style-type: none;
 }
 
+img {
+    display: block;
+    margin: 15px auto;
+}
+
+code {
+    display: block;
+    width: 100%;
+    padding: 1em;
+    border-style: solid;
+    border-width: 1px;
+}
+
 .page {
     display: flex;
     height: 100%;
@@ -10,9 +23,9 @@ ul {
 .list {
     height: 100%;
     padding-right: 10px;
-    margin-right: 40px;
+    margin-right: 41px;
     position: fixed;
-    top: 35px;
+    top: 37px;
     right: 0;
     overflow: auto;
 }
@@ -44,6 +57,10 @@ ul {
     font-weight: bold;
 }
 
+.list-file, .list-folder-title {
+    font-size: 15px;
+}
+
 .list-group {
 }
 
@@ -72,6 +89,7 @@ ul {
     display: flex;
     align-items: flex-end;
     background-color: white;
+    margin-left: 75px;
 }
 
 .content-divider {
@@ -80,17 +98,22 @@ ul {
     width: 100%;
     border-bottom-width: 1px;
     border-bottom-style: solid;
+    margin-right: 10px;
 }
 
 .content-markdown {
+    width: 60%;
     margin-top: 35px;
+    margin-right: 55px;
 }
 
 ::-webkit-scrollbar {
     width: 5px;
+    height: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
     border-right: solid 3px white;
+    border-bottom: solid 3px white;
     background: #000000;
 }

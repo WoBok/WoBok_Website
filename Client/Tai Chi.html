@@ -1,0 +1,102 @@
+<style>
+    .square {
+        width: 100px;
+        height: 100px;
+        position: fixed;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        animation: rotate infinite linear 5s;
+        margin: 10% auto;
+        -webkit-animation: rotate infinite linear 5s;
+        margin: 10% auto;
+        -moz-animation: rotate infinite linear 5s;
+        margin: 10% auto;
+        bottom: -150px;
+        left: 30px;
+    }
+
+    .rect {
+        width: 100px;
+        height: 50px;
+        position: relative;
+        border: 1px #d2d2d2 solid;
+        border-bottom: none;
+    }
+
+    .inner_circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .dot {
+        width: 12.5px;
+        height: 12.5px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        border-radius: 50%;
+    }
+
+    .rect_one {
+        border-radius: 50px 50px 0 0;
+        background: white;
+    }
+
+    .rect_one_one {
+        bottom: -25px;
+        left: 0;
+        background: black;
+    }
+
+    .rect_one_two {
+        background: white;
+    }
+
+    .rect_two {
+        border-radius: 0 0 50px 50px;
+        background: black;
+    }
+
+    .rect_two_one {
+        bottom: 25px;
+        right: 0;
+        background: white;
+    }
+
+    .rect_two_two {
+        background: black;
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+            -webkit-transform: rotate(360deg);
+        }
+    }
+</style>
+
+
+<div class="square">
+    <div class="rect rect_one">
+        <div class="inner_circle rect_one_one">
+            <div class="dot rect_one_two"></div>
+        </div>
+    </div>
+    <div class="rect rect_two">
+        <div class="inner_circle rect_two_one">
+            <div class="dot rect_two_two"></div>
+        </div>
+    </div>
+</div>

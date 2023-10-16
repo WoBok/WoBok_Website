@@ -5,12 +5,11 @@ const CLASSNAME_LIST_FILE = 'list-file';
 const CLASSNAME_LIST_FOLDER = 'list-folder';
 const CLASSNAME_LIST_FOLDER_TITLE = 'list-folder-title';
 const CLASSNAME_LIST_GROUP = 'list-group';
-const TITLE_LENGTH = 10;
+const TITLE_LENGTH = 15;
 
 const $markdownContent = document.querySelector("#markdownContent");
 const $fileListContent = document.querySelector("#fileListContent");
 const $markdownContentTitle = document.querySelector("#markdownContentTitle");
-const $img = document.querySelector("img");
 
 const rootPath = "Markdowns";
 
@@ -20,16 +19,10 @@ var lastSelectedNode;
 
 const renderer = {
     image(href, title, text) {
-        return `<img src="${markdownPath}/${href}" alt="${text}">`;
+        return `<img src="${markdownPath}/${href}" alt="${text}" style = "max-width: 1000px;" >`;
     }
 }
-//style = "width: auto;" onclick = "
-//if (this.style.width != '1000px') {
-//    this.style.width = '1000px';
-//} else {
-//    this.style.width = 'auto';
-//}
-//"
+
 marked.use({ renderer });
 
 async function getFileList(path) {
@@ -44,6 +37,7 @@ async function getMarkdownText(fileName) {
 
 function parseMarkdown(md) {
     $markdownContent.innerHTML = marked.parse(md);
+    hljs.highlightAll();
 }
 
 function displayMarkdown(fileName) {
