@@ -1,3 +1,4 @@
+/*Reader*/
 ul {
     list-style-type: none;
 }
@@ -117,6 +118,46 @@ a {
     margin-top: 35px;
     margin-right: 55px;
 }
+/*Reader*/
+
+/*One*/
+.one-content {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-width: 1px;
+    /*margin-top: 45px;*/
+    max-width: 1030px;
+    margin: 35px auto;
+}
+
+.one-img {
+    max-width: 1000px;
+    width: 100%
+}
+
+.one-img-title {
+    display: block;
+    width: 100%;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.one-text {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-left: 75px;
+    font-weight: bold;
+}
+
+.one-text-title {
+    display: block;
+    margin: 35px auto;
+}
+/*One*/
 
 ::-webkit-scrollbar {
     width: 5px;
