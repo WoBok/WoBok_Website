@@ -23,7 +23,24 @@ const renderer = {
     }
 }
 
-marked.use({ renderer });
+//marked.use({ renderer });
+
+var imgSrcReplaceExtension = function () {
+    return [
+        {
+            type: 'output',
+            filter: function (text, converter, options) {
+                var regex = /<img [^>]*src="([^"]+)"[^>]*>/gi;
+                return text.replace(regex, function (match, p1) {
+                    var newSrc = `${markdownPath}/${p1}`; 
+                    return match.replace(p1, newSrc);
+                });
+            }
+        }
+    ];
+};
+
+showdown.extension('imgSrcReplace', imgSrcReplaceExtension);
 
 async function getFileList(path) {
     var url = `/api/FileList/${path}`;
@@ -36,8 +53,11 @@ async function getMarkdownText(fileName) {
 }
 
 function parseMarkdown(md) {
-    $markdownContent.innerHTML = marked.parse(md);
+    //$markdownContent.innerHTML = marked.parse(md);
+    var converter = new showdown.Converter({ extensions: ['imgSrcReplace'] });
+    $markdownContent.innerHTML = converter.makeHtml(md);
     hljs.highlightAll();
+    MathJax.typeset();
 }
 
 function displayMarkdown(fileName) {

@@ -38,30 +38,32 @@ async function getTextAndImageData() {
 }
 
 async function displayTextAndImage() {
-    var data = await getTextAndImageData();
+    if ($markdownContent.innerHTML=="") {
+        var data = await getTextAndImageData();
 
-    var contentDiv = document.createElement('div');
-    var img = document.createElement('img');
-    var imgTitle = document.createElement('span');
-    var text = document.createElement('span');
-    var textTitle = document.createElement('span');
+        var contentDiv = document.createElement('div');
+        var img = document.createElement('img');
+        var imgTitle = document.createElement('span');
+        var text = document.createElement('span');
+        var textTitle = document.createElement('span');
 
-    contentDiv.className = CLASSNAME_ONE_CONTENT;
-    img.className = CLASSNAME_ONE_IMG;
-    imgTitle.className = CLASSNAME_ONE_IMGTITLE;
-    text.className = CLASSNAME_ONE_TEXT;
-    textTitle.className = CLASSNAME_ONE_TEXTTITLE;
+        contentDiv.className = CLASSNAME_ONE_CONTENT;
+        img.className = CLASSNAME_ONE_IMG;
+        imgTitle.className = CLASSNAME_ONE_IMGTITLE;
+        text.className = CLASSNAME_ONE_TEXT;
+        textTitle.className = CLASSNAME_ONE_TEXTTITLE;
 
-    img.src = data['imgUrl'];
-    imgTitle.innerHTML = `${data['imgTitle']}|${data['imgInfo']}`;
-    text.innerHTML = data['text'];
-    textTitle.innerHTML = data['textInfo'];
+        img.src = data['imgUrl'];
+        imgTitle.innerHTML = `${data['imgTitle']}|${data['imgInfo']}`;
+        text.innerHTML = data['text'];
+        textTitle.innerHTML = data['textInfo'];
 
-    $markdownContent.appendChild(contentDiv);
-    contentDiv.appendChild(img);
-    contentDiv.appendChild(imgTitle);
-    contentDiv.appendChild(text);
-    contentDiv.appendChild(textTitle);
+        $markdownContent.appendChild(contentDiv);
+        contentDiv.appendChild(img);
+        contentDiv.appendChild(imgTitle);
+        contentDiv.appendChild(text);
+        contentDiv.appendChild(textTitle);
+    }
 }
 
 export const one = {
