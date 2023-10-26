@@ -19,7 +19,7 @@ pre > code {
 
 code:not(pre > code) {
     display: inline-block;
-    margin: 3px;
+    margin: 3px 0;
     padding: 1px;
     border-style: solid;
     border-width: 1px;

@@ -1,5 +1,5 @@
-import { reader } from './Reader.js'
-import { one } from './One.js';
+import { reader } from './reader.js'
+import { one } from './one.js';
 
 reader.displayList();
 

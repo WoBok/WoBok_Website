@@ -1,4 +1,4 @@
-import { httpRequest } from './HttpRequester.js'
+import { httpRequest } from './http-requester.js'
 
 const CLASSNAME_LIST_ROOT = 'list-root';
 const CLASSNAME_LIST_FILE = 'list-file';
@@ -16,14 +16,6 @@ const rootPath = "Markdowns";
 var markdownPath = rootPath;
 
 var lastSelectedNode;
-
-const renderer = {
-    image(href, title, text) {
-        return `<img src="${markdownPath}/${href}" alt="${text}" style = "max-width: 1000px;" >`;
-    }
-}
-
-//marked.use({ renderer });
 
 var imgSrcReplaceExtension = function () {
     return [
@@ -53,7 +45,6 @@ async function getMarkdownText(fileName) {
 }
 
 function parseMarkdown(md) {
-    //$markdownContent.innerHTML = marked.parse(md);
     var converter = new showdown.Converter({ extensions: ['imgSrcReplace'] });
     $markdownContent.innerHTML = converter.makeHtml(md);
     hljs.highlightAll();

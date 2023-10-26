@@ -1,4 +1,4 @@
-import { httpRequest } from './HttpRequester.js'
+import { httpRequest } from './http-requester.js'
 
 const CLASSNAME_ONE_CONTENT = 'one-content';
 const CLASSNAME_ONE_IMG = 'one-img';
